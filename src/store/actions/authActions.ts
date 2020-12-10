@@ -109,3 +109,32 @@ export const setError = (msg: string): ThunkAction<void, RootState, null, AuthAc
     }
 }
 
+export const setNeedVerificataion = (): ThunkAction<void, RootState, null, AuthAction> => {
+    return dispatch => {
+        dispatch({
+            type: NEED_VERIFICATION
+        })
+    }
+}
+
+//set success
+export const setSuccess = (msg: string): ThunkAction<void, RootState, null, AuthAction> => {
+    return dispatch => {
+        dispatch({
+            type: SET_SUCCESS,
+            payload: msg
+        })
+    }
+}
+
+export const sendPasswordResetEmail = (email: string, successMsg: string): ThunkAction<void, RootState, null, AuthAction> => {
+    return async dispatch => {
+        try {
+            await firebase.auth().sendPasswordResetEmail(email);
+            dispatch(setSuccess(successMsg));
+        } catch (err) {
+            console.log(err);
+            dispatch(setError(err.message));
+       }
+    }
+}
