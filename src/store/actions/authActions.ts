@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 
-import { SignUpData, AuthAction, SET_USER, User, SET_LOADING, SIGN_OUT, SignInData, SET_ERROR, NEED_VERIFICATION, SET_SUCCESS } from "../types";
+import { SignUpData, AuthAction, SET_USER, User, SET_LOADING, SIGN_OUT, SignInData, SET_ERROR, NEED_VERIFICATION, SET_SUCCESS, AuthState } from "../types";
 
 import { RootState } from "..";
 import firebase from "../../firebase/config";
@@ -40,6 +40,7 @@ export const signup = (data: SignUpData, onError: () => void): ThunkAction<void,
 }
 
 
+
 //Get user by id
 
 export const getUserById = (id: string): ThunkAction<void, RootState, null, AuthAction> => {
@@ -67,3 +68,44 @@ export const setLoading = (value: boolean): ThunkAction<void, RootState, null, A
         });
     }
 }
+
+export const signin = (data: SignInData, onError: () => void): ThunkAction<void, RootState, null, AuthAction> => {
+    return async dispatch => {
+        try {
+            await firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+        } catch (err) {
+            console.log(err);
+            onError();
+            dispatch(setError(err.message));
+        }
+    }
+}
+
+
+//Log out
+export const signout = (): ThunkAction<void, RootState, null, AuthAction> => {
+    return async dispatch => {
+        try {
+            dispatch(setLoading(true));
+            await firebase.auth().signOut();
+            dispatch({
+            type: SIGN_OUT
+        })
+        } catch (err) {
+            console.log(err);
+            dispatch(setLoading(false));
+        }
+
+    }
+}
+//Set error
+
+export const setError = (msg: string): ThunkAction<void, RootState, null, AuthAction> => {
+    return dispatch => {
+        dispatch({
+            type: SET_ERROR,
+            payload: msg
+        })
+    }
+}
+
