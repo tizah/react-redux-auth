@@ -109,7 +109,7 @@ export const setError = (msg: string): ThunkAction<void, RootState, null, AuthAc
     }
 }
 
-export const setNeedVerificataion = (): ThunkAction<void, RootState, null, AuthAction> => {
+export const setNeedVerification = (): ThunkAction<void, RootState, null, AuthAction> => {
     return dispatch => {
         dispatch({
             type: NEED_VERIFICATION

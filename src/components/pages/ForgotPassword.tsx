@@ -1,15 +1,15 @@
 import React, { FC, useState, FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import Message from "../components/UI/Message";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import Message from "../UI/Message";
 import {
   sendPasswordResetEmail,
   setError,
   setSuccess,
-} from "../store/actions/authActions";
-import { RootState } from "../store";
+} from "../../store/actions/authActions";
+import { RootState } from "../../store";
 
 const ForgotPassword: FC = () => {
   const [email, setEmail] = useState("");

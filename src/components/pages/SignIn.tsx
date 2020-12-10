@@ -2,11 +2,11 @@ import React, { FC, useState, FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import Message from "../components/UI/Message";
-import { signin, setError } from "../store/actions/authActions";
-import { RootState } from "../store";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import Message from "../UI/Message";
+import { signin, setError } from "../../store/actions/authActions";
+import { RootState } from "../../store";
 
 const SignIn: FC = () => {
   const [email, setEmail] = useState("");
