@@ -27,7 +27,7 @@ const App: FC = () => {
   //check if a user exist
   useEffect(() => {
     dispatch(setLoading(true));
-    const unsubscript = firebase.auth().onAuthStateChanged(async (user) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         dispatch(setLoading(true));
         await dispatch(getUserById(user.uid));
@@ -40,12 +40,12 @@ const App: FC = () => {
     });
 
     return () => {
-      unsubscript();
+      unsubscribe();
     };
   }, [dispatch]);
 
   if (loading) {
-    return <Loader />;
+    // return <Loader />;
   }
   return (
     <BrowserRouter>
