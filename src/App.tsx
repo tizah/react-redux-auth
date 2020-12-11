@@ -11,7 +11,6 @@ import Homepage from "../src/components/pages/Homepage";
 import Dashboard from "../src/components/pages/Dashboard";
 import PrivateRoute from "../src/components/auth/PrivateRoute";
 import PublicRoute from "../src/components/auth/PublicRoute";
-import Loader from "../src/components/UI/Loader";
 import firebase from "../src/firebase/config";
 import {
   getUserById,

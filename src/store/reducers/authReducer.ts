@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AuthAction, AuthState, SET_USER, SET_LOADING, SIGN_OUT, SET_ERROR, NEED_VERIFICATION, SET_SUCCESS } from "../types";
 
 const initialState: AuthState = {
