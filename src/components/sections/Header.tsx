@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
 import Button from "../UI/Button";
 import { signout } from "../../store/actions/authActions";
-import { Divider } from "@material-ui/core";
 
 const Header: FC = () => {
   const history = useHistory();
