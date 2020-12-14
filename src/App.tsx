@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
 
 import Header from "../src/components/sections/Header";
@@ -50,7 +50,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" component={Homepage} exact />
+        <PublicRoute path="/" component={Homepage} exact />
         <PublicRoute path="/signup" component={SignUp} exact />
         <PublicRoute path="/signin" component={SignIn} exact />
         <PublicRoute path="/forgot-password" component={ForgotPassword} exact />
