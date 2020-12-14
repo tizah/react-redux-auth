@@ -34,7 +34,7 @@ const Dashboard: FC = () => {
     if (!imagesLoaded) {
       dispatch(getImages());
     }
-  }, []);
+  }, [imagesLoaded, dispatch]);
 
   useEffect(() => {
     if (images.length > 0) {

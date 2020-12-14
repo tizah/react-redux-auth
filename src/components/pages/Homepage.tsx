@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ImageModal from "../UI/ImageModal";
 import Card from "../UI/Card";
-import Alert from "../UI/Alert";
 import { RootState } from "../../store";
 import { getImages } from "../../store/actions/galleryActions";
 import { GalleryImage } from "../../store/types";
