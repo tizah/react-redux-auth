@@ -19,9 +19,9 @@ const Card: FC<CardProps> = ({
     <div className="card">
       <div className="card-content">
         <div
-          className="content"
           style={{ backgroundImage: `url(${imageUrl})` }}
           onClick={onImageClick}
+          className="content"
         ></div>
       </div>
       <footer className="card-footer">

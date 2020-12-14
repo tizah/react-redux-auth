@@ -24,7 +24,9 @@ const Modal: FC<ModalProps> = ({ onClose, title, children }) => {
         </header>
         <section className="modal-card-body">{children}</section>
         <footer className="modal-card-foot">
-          <button className="button" onClick={() => {}}></button>
+          <button className="button" onClick={onClose}>
+            Cancel
+          </button>
         </footer>
       </div>
     </div>

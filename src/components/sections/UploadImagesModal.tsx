@@ -29,9 +29,11 @@ const UploadImagesModal: FC<UploadImagesModalProps> = ({ onClose }) => {
 
       let images: Image[] = [];
 
-      Array.from(e.currentTarget.files).forEach((file) =>
-        images.push({ name: file.name, progress: 0 })
-      );
+      Array.from(e.currentTarget.files).forEach((file) => {
+        images.push({ name: file.name, progress: 0 });
+      });
+      setFilesArr(images);
+    } else {
       setFilesArr([]);
       setDisabled(true);
     }
@@ -40,6 +42,7 @@ const UploadImagesModal: FC<UploadImagesModalProps> = ({ onClose }) => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+
     if (files && files.length > 0 && user) {
       dispatch(
         addImage(files, user, (progress, file) => {
@@ -53,9 +56,12 @@ const UploadImagesModal: FC<UploadImagesModalProps> = ({ onClose }) => {
           const updatedArr = copyOfFilesArr.map((f) =>
             f.name === file.name ? (findFile ? findFile : f) : f
           );
+
           setFilesArr(updatedArr);
         })
       );
+      setFiles(null);
+      setDisabled(true);
     }
   };
 
@@ -63,9 +69,10 @@ const UploadImagesModal: FC<UploadImagesModalProps> = ({ onClose }) => {
     <Modal onClose={onClose} title="Upload Images">
       <form onSubmit={submitHandler}>
         <FileUpload onChange={changeHandler} />
+
         {filesArr.length > 0 && (
           <ul className="mt-3 mb-3">
-            {filesArr.map((file: Image, index) => {
+            {filesArr.map((file: Image, index) => (
               <li key={index} className="mb-2">
                 <p className="is-size-7 mb-1">
                   {file.name}
@@ -80,10 +87,10 @@ const UploadImagesModal: FC<UploadImagesModalProps> = ({ onClose }) => {
                   value={file.progress}
                   max="100"
                 >
-                  {file.progress} %
+                  {file.progress}%
                 </progress>
-              </li>;
-            })}
+              </li>
+            ))}
           </ul>
         )}
         <Button text="Upload" disabled={disabled} className="is-primary mt-2" />
