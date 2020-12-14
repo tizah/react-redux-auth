@@ -11,6 +11,7 @@ const Input: FC<InputProps> = ({
   name,
   onChange,
   label,
+  multiple,
 }) => {
   return (
     <div className="field">
@@ -26,6 +27,7 @@ const Input: FC<InputProps> = ({
           onChange={onChange}
           autoComplete="off"
           required
+          multiple={multiple}
         />
       </div>
     </div>
